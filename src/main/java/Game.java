@@ -1,17 +1,19 @@
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Game {
-    ArrayList<Player> players = new ArrayList<>();
+    HashMap<String, Player> players = new HashMap<>();
 
     public void register(Player player) {
-        players.add(player);
+        players.put(player.getName(), player);
     }
 
     public Player findByName(String name) {
-        for (Player player : players) {
-            if (name.equals(player.getName())) {
-                return player;
-            }
+        Player result = null;
+        for (String key : players.keySet()) {
+            result = players.get(name);
+        }
+        if (result != null) {
+            return result;
         }
         throw new NotRegisteredException("Element with name: " + name + " not found");
     }
@@ -27,7 +29,7 @@ public class Game {
         return result;
     }
 
-    public ArrayList<Player> getPlayers() {
+    public HashMap<String, Player> getPlayers() {
         return players;
     }
 }
