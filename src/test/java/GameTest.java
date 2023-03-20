@@ -2,6 +2,8 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
+
 public class GameTest {
     Game game = new Game();
     Player player1 = new Player(1, "Player1", 10);
@@ -19,13 +21,20 @@ public class GameTest {
         game.register(player5);
     }
 
-    //    @Test
-//    public void shouldAddPlayer() {
-//        List<Player> expected = List.of(player1, player2, player3, player4, player5);
-//        List<Player> actual = game.getPlayers();
-//
-//        Assertions.assertEquals(expected, actual);
-//    }
+    @Test
+    public void shouldAddPlayer() {
+        HashMap<String, Player> expected = new HashMap<>();
+        expected.put(player1.getName(), player1);
+        expected.put(player2.getName(), player2);
+        expected.put(player3.getName(), player3);
+        expected.put(player4.getName(), player4);
+        expected.put(player5.getName(), player5);
+
+        HashMap<String, Player> actual = game.getPlayers();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
     @Test
     public void shouldRoundPlayer1IsStronger() {
         int expected = 1;

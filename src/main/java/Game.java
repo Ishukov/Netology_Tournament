@@ -9,9 +9,7 @@ public class Game {
 
     public Player findByName(String name) {
         Player result = null;
-        for (String key : players.keySet()) {
-            result = players.get(name);
-        }
+        result = players.get(name);
         if (result != null) {
             return result;
         }
